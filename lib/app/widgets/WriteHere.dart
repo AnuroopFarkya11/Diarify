@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:snetimentaldiary/MyWidgets/EnterTitleWidget.dart';
-import 'package:snetimentaldiary/MyWidgets/WriteDiary.dart';
+
+import 'EnterTitleWidget.dart';
+import 'WriteDiary.dart';
 
 class WriteHere extends StatelessWidget {
   const WriteHere({Key? key}) : super(key: key);
@@ -8,36 +9,30 @@ class WriteHere extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffece9e6),
+      backgroundColor: const Color(0xffece9e6),
       appBar: AppBar(
-        title: Text('Sentimental Diary'),
+        title: const Text('Sentimental Diary'),
       ),
       body: Column(
-        
         children: [
-
-
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Flexible(
+                const Flexible(
                     child: EnterTitleWidget()),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.save,
                     size: 45,
                   ),
-                  onPressed: () {},
+                  onPressed: (){},
                 )
               ],
             ),
           ),
-          WriteDiary()
-
-
-
+          const WriteDiary()
         ],
       ),
     );
