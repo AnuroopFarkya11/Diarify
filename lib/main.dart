@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:snetimentaldiary/app/services/firebase.dart';
+import 'app/API/api_client.dart';
 import 'app/routes/routes.dart';
 import 'app/screens/auth_screen/sign_in_screen.dart';
 import 'app/screens/home_page.dart';
@@ -16,6 +17,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Get.put<FirebaseFireStore>(FirebaseFireStore());
+  Get.put<ApiClient>(ApiClient());
   Get.put<UserStore>(UserStore());
 
   runApp(const ProviderScope(
