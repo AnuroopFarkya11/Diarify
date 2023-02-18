@@ -22,8 +22,7 @@ class NotionEditingPage extends GetView<NotionEditingController> {
               padding: const EdgeInsets.all(4.0),
               child: TextField(
                  onChanged: (text) async {
-                   List<String> sentences = text.split('.');
-                   sentences[sentences.length-1];
+
                    var data = await controller.detectEmotion(
                        {
                          'string': "I am  happy"
