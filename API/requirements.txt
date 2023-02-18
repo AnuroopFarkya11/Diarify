@@ -1,0 +1,6 @@
+Flask
+Flask-RESTful
+numpy
+requests
+transformers
+torch
