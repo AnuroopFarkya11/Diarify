@@ -1,58 +1,47 @@
-import 'package:flutter/foundation.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:snetimentaldiary/MyRoutes/WriteHere.dart';
-import 'package:snetimentaldiary/MyWidgets/MusicPlayer.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
+import 'package:snetimentaldiary/app/services/firebase.dart';
+import 'app/routes/routes.dart';
+import 'app/screens/auth_screen/sign_in_screen.dart';
+import 'app/screens/home_page.dart';
+import 'app/services/user_store.dart';
+import 'app/widgets/authWidget.dart';
+import 'firebase_options.dart';
 
-import 'MyWidgets/CreateNotion.dart';
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  Get.put<FirebaseFireStore>(FirebaseFireStore());
+  Get.put<UserStore>(UserStore());
 
-
-void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(
+      child: MyApp())
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Sentimental Analyzer',
       theme: ThemeData(
-        backgroundColor: Color(0xffece9e6),
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
-      routes: {
-        '/write_here':(context)=>WriteHere(),
-      },
-    );
-  }
-}
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xffece9e6),
-      appBar: AppBar(title: Text('Sentimental Diary'),),
-      body: Column(
-        children: [
-          CreateNotionTile()
-        ],
+      home: Scaffold(
+        body: AuthWidget(
+          signedInBuilder: (context) => const HomePage(),
+          nonSignedInBuilder: (_) => const SignInPage(),
+        ),
       ),
-
+      getPages: RouteHelper.routes
     );
   }
 }
+
