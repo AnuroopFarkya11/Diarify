@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:snetimentaldiary/MyRoutes/WriteHere.dart';
+import 'package:snetimentaldiary/MyWidgets/MusicPlayer.dart';
 
 import 'MyWidgets/CreateNotion.dart';
 
