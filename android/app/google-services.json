@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "821191142944",
+    "project_id": "sentimentaldiary",
+    "storage_bucket": "sentimentaldiary.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821191142944:android:239f997f86cce6893fd645",
+        "android_client_info": {
+          "package_name": "com.example.snetimentaldiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "821191142944-4uq3sp8nl8co1as0kcp9mdmudb0soh62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj2Uli5HL4tILqvk_Q9WWEhPK_t46k2Ik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "821191142944-4uq3sp8nl8co1as0kcp9mdmudb0soh62.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
