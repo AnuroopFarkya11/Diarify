@@ -9,13 +9,16 @@ class NotionEditingController extends GetxController {
   var isLoading = true.obs;
 
   detectEmotion(Map<String, dynamic> detectedSentence) async {
-    var data =  await ApiClient.to.post(
-      'url',
+    var data =  await ApiClient.to.postData(
+      '',
         detectedSentence
     );
-    if(data.statusCode == 200){
-      return data.body;
-    }
-    return null;
+    // if(data.statusCode == 200){
+    //   return data.body;
+    // }
+    // return null;
+    //   return data.body;
+
+    return data.body;
   }
 }

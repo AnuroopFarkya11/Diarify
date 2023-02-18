@@ -8,6 +8,7 @@ import 'app/routes/routes.dart';
 import 'app/screens/auth_screen/sign_in_screen.dart';
 import 'app/screens/home_page.dart';
 import 'app/services/user_store.dart';
+import 'app/store/storage.dart';
 import 'app/widgets/authWidget.dart';
 import 'firebase_options.dart';
 
@@ -18,6 +19,7 @@ Future<void> main() async {
   );
   Get.put<FirebaseFireStore>(FirebaseFireStore());
   Get.put<ApiClient>(ApiClient());
+  await Get.putAsync<StorageService>(() => StorageService().init());
   Get.put<UserStore>(UserStore());
 
   runApp(const ProviderScope(
