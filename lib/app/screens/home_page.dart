@@ -25,7 +25,7 @@ class HomePage extends GetView<HomePageController> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 height: 60,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
 
                   color: Color(0xFF58AEFE),
                   borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -34,7 +34,7 @@ class HomePage extends GetView<HomePageController> {
                   padding: const EdgeInsets.only(left: 10,right: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         'Create a new Notion',
                         style: TextStyle(
@@ -42,11 +42,8 @@ class HomePage extends GetView<HomePageController> {
                             fontSize: 20
                         ),
                       ),
-
                       Icon(Icons.add,size: 40,)
-
                     ],
-
                   ),
                 ),
               ),

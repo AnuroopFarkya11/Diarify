@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:snetimentaldiary/app/services/user_store.dart';
+import '../models/notion_model/notion_model.dart';
 import '../models/user_model/user_model.dart';
 
 class FirebaseFireStore extends GetxController{
@@ -29,5 +30,18 @@ class FirebaseFireStore extends GetxController{
         .get();
   }
 
+  uploadNotion(NotionModel notion) async {
+    var notionId =  fireStore
+        .collection('notions')
+        .doc().id;
+
+    await fireStore
+        .collection('notions')
+        .doc(notionId)
+        .set(notion.copyWith(
+      notionId: notionId
+    ).toJson());
+
+  }
 
 }
