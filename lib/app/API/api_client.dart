@@ -6,7 +6,7 @@ class ApiClient extends GetConnect implements GetxService{
   static ApiClient get to => Get.find();
 
   late String token;
-  String appBaseUrl = 'http://10.10.40.217:5000/';
+  String appBaseUrl = 'http://192.168.191.27:5000/';
 
   Future<Response> getData(String uri) async{
     try{
@@ -19,12 +19,11 @@ class ApiClient extends GetConnect implements GetxService{
 
   Future<Response> postData(String uri,dynamic body)async{
     try{
-      log("Calling the request");
       var response = await post(appBaseUrl, body);
-      log("Done with the request: ${response.body}.");
+      log(response.body);
       return response;
     }catch(e){
-      log("e.toString()");
+      log(e.toString());
       return Response(statusCode: 1,statusText: e.toString());
     }
   }
