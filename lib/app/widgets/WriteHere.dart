@@ -32,7 +32,6 @@ class WriteHere extends StatelessWidget {
               ],
             ),
           ),
-          const WriteDiary()
         ],
       ),
     );

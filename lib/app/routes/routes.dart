@@ -22,7 +22,7 @@ class RouteHelper{
 
     GetPage(
       name: RoutePaths.notionEditingPage,
-      page: ()=> const NotionEditingPage(),
+      page: ()=>  NotionEditingPage(),
       binding: NotionEditingBinding()
     ),
   ];

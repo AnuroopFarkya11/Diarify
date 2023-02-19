@@ -45,6 +45,8 @@ dependencies:
   json_annotation: ^4.8.0
   flutter_riverpod: ^1.0.3
   get: ^4.6.1
+  audioplayers: ^0.20.1
+
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class EnterTitleWidget extends StatelessWidget {
+import '../screens/notion_editing_page/getx_helper/controller.dart';
+
+class EnterTitleWidget extends  GetView<NotionEditingController>{
   const EnterTitleWidget({Key? key}) : super(key: key);
 
   @override
@@ -14,6 +17,7 @@ class EnterTitleWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
         child: TextField(
+          controller: controller.title_controller,
           decoration: InputDecoration(
             hintText: "Enter Title",
             hintStyle: TextStyle(

@@ -1,4 +1,8 @@
 
+import 'dart:developer';
+
+import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:snetimentaldiary/app/API/api_client.dart';
 import 'package:snetimentaldiary/app/models/sentimental_model/sentimental_model.dart';
@@ -14,7 +18,34 @@ class NotionEditingController extends GetxController {
   var prev = ''.obs;
   var isLoading = true.obs;
 
+
+  TextEditingController title_controller = TextEditingController();
+  TextEditingController content_controller = TextEditingController();
+
+
+  final audioPlayer = AudioPlayer();
+
+  var isPlaying = false.obs;
+
+
+
+  playSong()async {
+    log('hellp');
+    if (isPlaying.value) {
+      await audioPlayer.pause();
+      isPlaying.value = false;
+    }
+    else {
+      String url = "https://drive.google.com/uc?export=view&id=1R6y8xTKmmy66mix6HmptVGebEBPd8k24";
+      await audioPlayer.play(url);
+      isPlaying.value = true;
+    }
+  }
+
+
+
   detectEmotion(Map<String, dynamic> detectedSentence) async {
+    log(detectedSentence.toString());
     var data =  await ApiClient.to.postData(
       '',
       detectedSentence
