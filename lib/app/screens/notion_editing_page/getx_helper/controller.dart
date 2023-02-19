@@ -13,12 +13,10 @@ class NotionEditingController extends GetxController {
       '',
       detectedSentence
     );
-    // if(data.statusCode == 200){
-    //   return data.body;
-    // }
-    // return null;
-    //   return data.body;
+    if(data.statusCode == 200){
+      return data.body;
+    }
+    return null;
 
-    return data;
   }
 }

@@ -22,13 +22,15 @@ class NotionEditingPage extends GetView<NotionEditingController> {
               padding: const EdgeInsets.all(4.0),
               child: TextField(
                  onChanged: (text) async {
-
-                   var data = await controller.detectEmotion(
-                       {
-                         'string': "I am  happy"
-                       }
-                   );
-                   log('This is the data from post method : $data');
+                   if(text.endsWith('.')){
+                     List<String> segments = text.split('.');
+                     var data = await controller.detectEmotion(
+                         {
+                           'string': segments[segments.length-1]
+                         }
+                     );
+                     log('This is the data from post method : $data');
+                   }
                  },
                 decoration: const InputDecoration(
                     border: InputBorder.none,
