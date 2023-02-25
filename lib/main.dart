@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:snetimentaldiary/app/screens/getx_helper/controller.dart';
 import 'package:snetimentaldiary/app/services/firebase.dart';
 import 'app/API/api_client.dart';
 import 'app/routes/routes.dart';
@@ -21,6 +22,7 @@ Future<void> main() async {
   Get.put<ApiClient>(ApiClient());
   await Get.putAsync<StorageService>(() => StorageService().init());
   Get.put<UserStore>(UserStore());
+  Get.put<HomePageController>(HomePageController());
 
   runApp(const ProviderScope(
       child: MyApp())

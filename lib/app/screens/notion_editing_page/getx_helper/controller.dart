@@ -56,6 +56,5 @@ class NotionEditingController extends GetxController {
           dateTime: DateTime.now(),
         )
     );
-    Get.offAndToNamed(RoutePaths.homePage);
   }
 }

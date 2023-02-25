@@ -27,6 +27,7 @@ class FirebaseFireStore extends GetxController{
     return await fireStore
         .collection("notions")
         .where('userId', isEqualTo: UserStore.to.uid)
+        .orderBy('dateTime', descending: true)
         .get();
   }
 
