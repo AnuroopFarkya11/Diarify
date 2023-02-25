@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snetimentaldiary/app/screens/notion_editing_page/getx_helper/controller.dart';
@@ -86,12 +84,11 @@ class NotionEditingPage extends GetView<NotionEditingController> {
                   keyboardType: TextInputType.multiline,
                   controller: controller.contentController,
                   onChanged: (text) async {
-                    if(text.endsWith('.')){
+                    if(text.endsWith('.') && '.'.allMatches(text).length%3 == 0){
                       List<String> segments = text.split('.');
-                      log(segments.toString());
                       await controller.detectEmotion(
                           {
-                            'string': segments[segments.length-2]
+                            'string': segments[segments.length-4] + segments[segments.length-3] + segments[segments.length-2]
                           }
                       );
                       if(controller.state.sentimentalData.value.sentiment != controller.prev.value){
