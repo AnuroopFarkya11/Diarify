@@ -9,6 +9,7 @@ class BottomPlayer extends GetView<NotionEditingController> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+      margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 15),
       decoration: BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.circular(50)
@@ -25,8 +26,9 @@ class BottomPlayer extends GetView<NotionEditingController> {
                       ? 'Current mood is ${controller.state.sentimentalData.value.sentiment}'
                       : "Sentiment Analyzed ",
                   style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white
                   ),
                 ),
               ),
