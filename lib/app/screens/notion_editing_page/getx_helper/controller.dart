@@ -17,20 +17,13 @@ class NotionEditingController extends GetxController {
   NotionEditingController();
   var prev = ''.obs;
   var isLoading = true.obs;
-
-
-  TextEditingController title_controller = TextEditingController();
-  TextEditingController content_controller = TextEditingController();
-
-
+  TextEditingController titleController = TextEditingController();
+  TextEditingController contentController = TextEditingController();
   final audioPlayer = AudioPlayer();
 
   var isPlaying = false.obs;
 
-
-
   playSong()async {
-    log('hellp');
     if (isPlaying.value) {
       await audioPlayer.pause();
       isPlaying.value = false;
@@ -41,8 +34,6 @@ class NotionEditingController extends GetxController {
       isPlaying.value = true;
     }
   }
-
-
 
   detectEmotion(Map<String, dynamic> detectedSentence) async {
     log(detectedSentence.toString());

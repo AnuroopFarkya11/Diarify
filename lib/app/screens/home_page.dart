@@ -13,9 +13,7 @@ class HomePage extends GetView<HomePageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffece9e6),
-      appBar: AppBar(title: const Text('Sentimental Diary'),
-        automaticallyImplyLeading: false,
-      ),
+      appBar: AppBar(title: const Text('Sentimental Diary'),),
       body: Column(
         children: [
           InkWell(

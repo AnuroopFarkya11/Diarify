@@ -1,49 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
 import 'package:snetimentaldiary/app/screens/notion_editing_page/getx_helper/controller.dart';
 
 class BottomPlayer extends GetView<NotionEditingController> {
-  final audioPlayer = AudioPlayer();
-
-  bool isPlaying = false;
-
-  Duration duration = Duration.zero;
-
-  Duration position = Duration.zero;
-
-
-  // @override
-  // void initState()
-  // {
-  //   audioPlayer.onPlayerStateChanged.listen((event) {
-  //     setState(() {
-  //       isPlaying = event ==PlayerState.PLAYING;
-  //     });
-  //   });
-  //
-  // }
-
-  playSong()async{
-    if(isPlaying) {
-      await audioPlayer.pause();
-      isPlaying = false;
-    }
-    else
-    {
-      String url = "https://drive.google.com/uc?export=view&id=1R6y8xTKmmy66mix6HmptVGebEBPd8k24";
-      await audioPlayer.play(url);
-      isPlaying=true;
-  }
-
-
-}
+  const BottomPlayer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 15),
       decoration: BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.circular(50)
@@ -67,7 +32,7 @@ class BottomPlayer extends GetView<NotionEditingController> {
               ),
               //PLAY/PAUSE
               Obx(
-              () => CircleAvatar(
+                () => CircleAvatar(
                   radius: 25,
                   backgroundColor: Colors.white,
                   child: IconButton(
@@ -83,9 +48,6 @@ class BottomPlayer extends GetView<NotionEditingController> {
               ),
             ],
           )
-
-
-
       ),
     );
   }

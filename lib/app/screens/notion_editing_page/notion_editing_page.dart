@@ -4,16 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snetimentaldiary/app/screens/notion_editing_page/getx_helper/controller.dart';
 import 'package:snetimentaldiary/app/widgets/EnterTitleWidget.dart';
-import 'package:snetimentaldiary/app/widgets/WriteDiary.dart';
 import 'package:snetimentaldiary/app/widgets/mediaPlayer.dart';
 
-import '../../widgets/WriteHere.dart';
-
 class NotionEditingPage extends GetView<NotionEditingController> {
-  NotionEditingPage({Key? key}) : super(key: key);
-
-
-
+  const NotionEditingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +20,16 @@ class NotionEditingPage extends GetView<NotionEditingController> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Flexible(child: EnterTitleWidget()),
+                  const Flexible(
+                    child: EnterTitleWidget(),
+                  ),
                   IconButton(
                     icon: const Icon(
                       Icons.save,
                       size: 40,
                     ),
                     onPressed: ()async{
-                      await controller.uploadMyNotion(controller.title_controller.text, controller.content_controller.text);
+                      await controller.uploadMyNotion(controller.titleController.text, controller.contentController.text);
                     },
                   )
                 ],
@@ -53,7 +49,7 @@ class NotionEditingPage extends GetView<NotionEditingController> {
                       child: TextField(
                         minLines: 1,
                         maxLines: 10,
-                        controller: controller.content_controller,
+                        controller: controller.contentController,
                            onChanged: (text) async {
                              if(text.endsWith('.')){
                                List<String> segments = text.split('.');
@@ -65,35 +61,31 @@ class NotionEditingPage extends GetView<NotionEditingController> {
                                );
                                if(controller.state.sentimentalData.value.sentiment != controller.prev.value){
                                  controller.prev.value = controller.state.sentimentalData.value.sentiment;
-                                 //Trigger the media player
-                                 controller.playSong();
+                                 await controller.playSong();
                                }
                              }
                              if(text.endsWith(',')){
                                List<String> segments = text.split(',');
-                               await controller.detectEmotion(
-                                   {
-                                     'string': segments[segments.length-1]
-                                   }
+                               await controller.detectEmotion({'string': segments[segments.length-1]}
                                );
                                if(controller.state.sentimentalData.value.sentiment != controller.prev.value){
                                  controller.prev.value = controller.state.sentimentalData.value.sentiment;
-                                 //Trigger the media player
+                                 await controller.playSong();
                                }
                              }
                            },
                           decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Start Typing...!",
-                              hintStyle: TextStyle(fontSize: 20)
+                            border: InputBorder.none,
+                            hintText: "Start Typing...!",
+                            hintStyle: TextStyle(fontSize: 20),
                           ),
                         ),
                       ),
                     ),
                 ),
-                ),
+              ),
             ),
-            BottomPlayer()
+            const BottomPlayer()
           ],
         ),
       ),
