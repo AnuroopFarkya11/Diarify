@@ -14,7 +14,6 @@ import 'app/services/user_store.dart';
 import 'app/store/storage.dart';
 import 'app/widgets/authWidget.dart';
 import 'firebase_options.dart';
-// import 'dart:html';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +25,6 @@ Future<void> main() async {
   await Get.putAsync<StorageService>(() => StorageService().init());
   Get.put<UserStore>(UserStore());
   Get.put<HomePageController>(HomePageController());
-
   runApp(const ProviderScope(
       child: MyApp())
   );
@@ -41,10 +39,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-
   @override
   void initState();
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -58,6 +54,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
 class Splashing extends StatefulWidget {
   const Splashing({Key? key}) : super(key: key);
 
@@ -69,7 +66,6 @@ class _SplashingState extends State<Splashing> {
 
  @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 5),
             ()=>Navigator.pushReplacement(context,
@@ -80,9 +76,6 @@ class _SplashingState extends State<Splashing> {
         )
     );
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -101,23 +94,6 @@ class _SplashingState extends State<Splashing> {
     );
   }
 }
-
-
-// class SplashRoute extends StatelessWidget {
-//   const SplashRoute({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return SplashScreen(
-//       seconds: 6,
-//       navigateAfterSeconds: new AuthScreen(),
-//       title: new Text('Hii!',textScaleFactor: 2,),
-//       photoSize: 100,
-//
-//     );
-//   }
-// }
-
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({Key? key}) : super(key: key);

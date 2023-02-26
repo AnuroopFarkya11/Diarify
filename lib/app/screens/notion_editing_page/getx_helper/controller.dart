@@ -23,6 +23,15 @@ class NotionEditingController extends GetxController {
 
   var isPlaying = false.obs;
 
+
+  @override
+  void onInit() {
+    var chatData = Get.parameters;
+    titleController.text = chatData['title']?? '';
+    contentController.text = chatData['content']?? '';
+    super.onInit();
+  }
+
   playSong()async {
     if (isPlaying.value) {
       await audioPlayer.pause();
