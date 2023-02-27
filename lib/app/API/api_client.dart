@@ -24,7 +24,6 @@ class ApiClient extends GetConnect implements GetxService{
       log("Done with the request: ${response.body}.");
       return response;
     }catch(e){
-      log("e.toString()");
       return Response(statusCode: 1,statusText: e.toString());
     }
   }

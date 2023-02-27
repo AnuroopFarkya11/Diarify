@@ -44,6 +44,12 @@ class NotionEditingController extends GetxController {
     }
   }
 
+  playSongOnEmotion()async {
+    isPlaying.value = true;
+    String url = "https://drive.google.com/uc?export=view&id=1R6y8xTKmmy66mix6HmptVGebEBPd8k24";
+    await audioPlayer.play(url);
+  }
+
   detectEmotion(Map<String, dynamic> detectedSentence) async {
     log(detectedSentence.toString());
     var data =  await ApiClient.to.postData(

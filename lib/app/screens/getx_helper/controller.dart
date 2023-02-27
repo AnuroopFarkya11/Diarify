@@ -1,10 +1,12 @@
 
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:snetimentaldiary/app/screens/getx_helper/state.dart';
 import 'package:snetimentaldiary/app/services/firebase.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 import '../../models/notion_model/notion_model.dart';
 
@@ -18,6 +20,7 @@ class HomePageController extends GetxController {
   @override
   Future<void> onInit() async {
     await getAllRecentNotions();
+    await readPdfText();
     super.onInit();
 
   }
@@ -51,5 +54,12 @@ class HomePageController extends GetxController {
   void dispose() {
     refreshController.dispose();
     super.dispose();
+  }
+
+  readPdfText() async {
+    final PdfDocument document = PdfDocument(inputBytes: File('assetMyCV.pdf').readAsBytesSync());
+    String text = PdfTextExtractor(document).extractText();
+    log('This is the pdf text: $text');
+    document.dispose();
   }
 }

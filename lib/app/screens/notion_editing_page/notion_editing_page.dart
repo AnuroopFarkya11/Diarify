@@ -93,7 +93,7 @@ class NotionEditingPage extends GetView<NotionEditingController> {
                       );
                       if(controller.state.sentimentalData.value.sentiment != controller.prev.value){
                         controller.prev.value = controller.state.sentimentalData.value.sentiment;
-                        await controller.playSong();
+                        await controller.playSongOnEmotion();
                       }
                     }
                     if(text.endsWith(',')){
@@ -102,7 +102,7 @@ class NotionEditingPage extends GetView<NotionEditingController> {
                       );
                       if(controller.state.sentimentalData.value.sentiment != controller.prev.value){
                         controller.prev.value = controller.state.sentimentalData.value.sentiment;
-                        await controller.playSong();
+                        await controller.playSongOnEmotion();
                       }
                     }
                   },
