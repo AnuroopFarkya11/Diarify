@@ -21,6 +21,14 @@ class NotionEditingController extends GetxController {
   TextEditingController contentController = TextEditingController();
   final audioPlayer = AudioPlayer();
 
+  final Map<String, String> songs = {
+    'joy': 'https://firebasestorage.googleapis.com/v0/b/sentimentaldiary.appspot.com/o/Songs%2Fhappy%201.mp3?alt=media&token=9acc5fde-adf4-4c4d-8673-d4fb8e65203d',
+    'sadness': 'https://firebasestorage.googleapis.com/v0/b/sentimentaldiary.appspot.com/o/Songs%2Fsad%201.mp3?alt=media&token=192f9f77-556a-4fc7-8b1c-eeb9338fa0f7',
+    'fear': 'https://firebasestorage.googleapis.com/v0/b/sentimentaldiary.appspot.com/o/Songs%2Ffear%201.mp3?alt=media&token=a0d1da60-1807-4787-9beb-60448d6d9f3d',
+    'anger': 'https://firebasestorage.googleapis.com/v0/b/sentimentaldiary.appspot.com/o/Songs%2Fangry%201.mp3?alt=media&token=91895db9-c1ab-410f-9e37-540465b4d716',
+    'surprise': 'https://firebasestorage.googleapis.com/v0/b/sentimentaldiary.appspot.com/o/Songs%2Ffear%201.mp3?alt=media&token=a0d1da60-1807-4787-9beb-60448d6d9f3d',
+  };
+
   var isPlaying = false.obs;
 
 
@@ -32,16 +40,22 @@ class NotionEditingController extends GetxController {
     super.onInit();
   }
 
-  playSong()async {
+  pauseSong() async {
     if (isPlaying.value) {
       await audioPlayer.pause();
       isPlaying.value = false;
-    }
-    else {
-      String url = "https://drive.google.com/uc?export=view&id=1R6y8xTKmmy66mix6HmptVGebEBPd8k24";
-      await audioPlayer.play(url);
+    }else{
+      await audioPlayer.play(songs[state.sentimentalData.value.sentiment]!);
       isPlaying.value = true;
     }
+  }
+
+  playSong() async {
+    if (isPlaying.value) {
+      await audioPlayer.pause();
+    }
+    await audioPlayer.play(songs[state.sentimentalData.value.sentiment]!);
+    isPlaying.value = true;
   }
 
   detectEmotion(Map<String, dynamic> detectedSentence) async {

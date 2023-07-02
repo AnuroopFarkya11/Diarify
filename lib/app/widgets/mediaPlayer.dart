@@ -43,7 +43,7 @@ class BottomPlayer extends GetView<NotionEditingController> {
                       size: 33,
                     ),
                     onPressed: ()async{
-                      controller.playSong();
+                      controller.pauseSong();
                     }
                   ),
                 ),

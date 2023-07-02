@@ -98,8 +98,7 @@ class NotionEditingPage extends GetView<NotionEditingController> {
                     }
                     if(text.endsWith(',')){
                       List<String> segments = text.split(',');
-                      await controller.detectEmotion({'string': segments[segments.length-1]}
-                      );
+                      await controller.detectEmotion({'string': segments[segments.length-1]});
                       if(controller.state.sentimentalData.value.sentiment != controller.prev.value){
                         controller.prev.value = controller.state.sentimentalData.value.sentiment;
                         await controller.playSong();
