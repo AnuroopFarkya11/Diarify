@@ -13,7 +13,7 @@ class HomePage extends GetView<HomePageController> {
     return Scaffold(
       backgroundColor: const Color(0xffece9e6),
       appBar: AppBar(
-        title: const Text('🖕 Lodu Ashwin'),
+        title: const Text('Diarify'),
         elevation: 0,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.blue,

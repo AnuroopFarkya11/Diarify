@@ -22,11 +22,11 @@ class NotionEditingController extends GetxController {
   final audioPlayer = AudioPlayer();
 
   final Map<String, String> songs = {
-    'joy': 'https://firebasestorage.googleapis.com/v0/b/sentimentaldiary.appspot.com/o/Songs%2Fhappy%201.mp3?alt=media&token=9acc5fde-adf4-4c4d-8673-d4fb8e65203d',
-    'sadness': 'https://firebasestorage.googleapis.com/v0/b/sentimentaldiary.appspot.com/o/Songs%2Fsad%201.mp3?alt=media&token=192f9f77-556a-4fc7-8b1c-eeb9338fa0f7',
-    'fear': 'https://firebasestorage.googleapis.com/v0/b/sentimentaldiary.appspot.com/o/Songs%2Ffear%201.mp3?alt=media&token=a0d1da60-1807-4787-9beb-60448d6d9f3d',
-    'anger': 'https://firebasestorage.googleapis.com/v0/b/sentimentaldiary.appspot.com/o/Songs%2Fangry%201.mp3?alt=media&token=91895db9-c1ab-410f-9e37-540465b4d716',
-    'surprise': 'https://firebasestorage.googleapis.com/v0/b/sentimentaldiary.appspot.com/o/Songs%2Ffear%201.mp3?alt=media&token=a0d1da60-1807-4787-9beb-60448d6d9f3d',
+    'joy': 'asset/songs/love 1.mp3',
+    'sadness': 'asset/songs/sad 2.mp3',
+    'fear': 'asset/songs/fear 1.mp3',
+    'anger': 'asset/songs/sad 1.mp3',
+    'surprise': 'asset/songs/happy 1.mp3',
   };
 
   var isPlaying = false.obs;
@@ -64,7 +64,7 @@ class NotionEditingController extends GetxController {
       '',
       detectedSentence
     );
-    if(data.statusCode == 200){
+    if(data.body != null){
       state.sentimentalData.value = SentimentalModel.fromJson(data.body);
     }
   }

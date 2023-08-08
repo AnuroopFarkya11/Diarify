@@ -1,21 +1,21 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart' as api;
 
-
-class ApiClient extends GetConnect implements GetxService{
-
+class ApiClient extends GetConnect implements GetxService {
   static ApiClient get to => Get.find();
-
+  final dio = api.Dio();
   late String token;
-  String appBaseUrl = 'http://127.0.0.1:5000/sentiment';
+  String appBaseUrl = 'http://192.168.29.217:5000/sentiment';
 
-  Future<Response> getData(String uri) async{
-    try{
-      var response = await get(appBaseUrl+uri);
+  getData(String uri) async {
+    try {
+      var response = await dio.get('http://192.168.29.217:5000/sentiment');
       return response;
-    }catch(e){
-      return Response(statusCode: 1,statusText: e.toString());
+    } catch (e) {
+      return null;
     }
   }
 
@@ -23,15 +23,17 @@ class ApiClient extends GetConnect implements GetxService{
     try{
       log("Calling the request");
 
-      var response = await post('http://127.0.0.1:5000/sentiment', body);
+      var response = await httpClient.post(
+        'http://192.168.29.217:5000/sentiment',
+        body: body,
+      );
       log(Uri.parse(appBaseUrl).toString());
       // final response1 = await http.post(Uri.parse(appBaseUrl), body: body);
       log("Done with the request: ${response.body}.");
       return response;
     }catch(e){
       log(e.toString());
-      return Response(statusCode: 1,statusText: e.toString());
+      return null;
     }
   }
-
 }
