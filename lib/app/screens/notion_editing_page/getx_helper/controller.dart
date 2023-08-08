@@ -45,7 +45,7 @@ class NotionEditingController extends GetxController {
       await audioPlayer.pause();
       isPlaying.value = false;
     }else{
-      await audioPlayer.play(songs[state.sentimentalData.value.sentiment]!);
+      // await audioPlayer.play(songs[state.sentimentalData.value.sentiment]!);
       isPlaying.value = true;
     }
   }
@@ -54,7 +54,7 @@ class NotionEditingController extends GetxController {
     if (isPlaying.value) {
       await audioPlayer.pause();
     }
-    await audioPlayer.play(songs[state.sentimentalData.value.sentiment]!);
+    // await audioPlayer.play(songs[state.sentimentalData.value.sentiment]!);
     isPlaying.value = true;
   }
 

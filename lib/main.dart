@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:snetimentaldiary/app/screens/audio_player.dart';
 import 'package:snetimentaldiary/app/screens/getx_helper/controller.dart';
 import 'package:snetimentaldiary/app/services/firebase.dart';
 import 'app/API/api_client.dart';
@@ -49,7 +50,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Splashing(),
+      home: AudioPlayerScreen(),
       getPages: RouteHelper.routes
     );
   }
