@@ -4,9 +4,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:snetimentaldiary/MusicPlayer/screen/controller.dart';
 import 'package:snetimentaldiary/app/screens/audio_player.dart';
 import 'package:snetimentaldiary/app/screens/getx_helper/controller.dart';
 import 'package:snetimentaldiary/app/services/firebase.dart';
+import 'package:snetimentaldiary/app/widgets/MusicPlayer.dart';
+import 'MusicPlayer/screen/music_player.dart';
 import 'app/API/api_client.dart';
 import 'app/routes/routes.dart';
 import 'app/screens/auth_screen/sign_in_screen.dart';
@@ -26,6 +29,7 @@ Future<void> main() async {
   await Get.putAsync<StorageService>(() => StorageService().init());
   Get.put<UserStore>(UserStore());
   Get.put<HomePageController>(HomePageController());
+  Get.put(MusicController());
   runApp(const ProviderScope(
       child: MyApp())
   );
@@ -50,8 +54,8 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AudioPlayerScreen(),
-      getPages: RouteHelper.routes
+      home: MusicPlayerScreen(),
+      // getPages: RouteHelper.routes
     );
   }
 }

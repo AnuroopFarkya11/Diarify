@@ -12,7 +12,7 @@ class ApiClient extends GetConnect implements GetxService {
 
   getData(String uri) async {
     try {
-      var response = await dio.get('http://192.168.29.217:5000/sentiment');
+      var response = await dio.get(appBaseUrl);
       return response;
     } catch (e) {
       return null;
@@ -24,7 +24,7 @@ class ApiClient extends GetConnect implements GetxService {
       log("Calling the request");
 
       var response = await httpClient.post(
-        'http://192.168.29.217:5000/sentiment',
+        appBaseUrl,
         body: body,
       );
       log(Uri.parse(appBaseUrl).toString());
