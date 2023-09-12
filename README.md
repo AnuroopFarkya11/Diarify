@@ -17,10 +17,12 @@ To use Diarify, follow the steps below:
 
 4. Install the required dependencies by running:
 
+   ```
    pip install -r requirements.txt
 
 6. Start the API server:
 
+   ```
    python api.py
 
 
@@ -31,12 +33,13 @@ To use Diarify, follow the steps below:
 
 4. Install the required dependencies by running:
 
+   ```
    pip install -r requirements.txt
 
 5. Start the API server:
 
-   python3 server.py
    ```
+   python3 server.py
 
 ### Using Diarify
 1. Install the app on your Android device.
