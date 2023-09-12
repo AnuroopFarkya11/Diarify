@@ -19,12 +19,12 @@ To use Diarify, follow the steps below:
 
    ```
    pip install -r requirements.txt
-
+   ```
 6. Start the API server:
 
    ```
    python api.py
-
+   ```
 
 #### For Linux Users:
 1. Download the API server files from the [API Server Repository](API).
@@ -35,12 +35,12 @@ To use Diarify, follow the steps below:
 
    ```
    pip install -r requirements.txt
-
+   ```
 5. Start the API server:
 
    ```
    python3 server.py
-
+   ```
 ### Using Diarify
 1. Install the app on your Android device.
 2. Launch the Diarify app.
