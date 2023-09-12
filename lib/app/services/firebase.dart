@@ -23,12 +23,12 @@ class FirebaseFireStore extends GetxController{
     return doc.exists ? UserModel.fromJson(doc.data()!) : null;
   }
 
-  Future<QuerySnapshot> getAllRecentNotions() async {
-    return await fireStore
+  Stream<QuerySnapshot> getAllRecentNotions() {
+    return fireStore
         .collection("notions")
         .where('userId', isEqualTo: UserStore.to.uid)
         .orderBy('dateTime', descending: true)
-        .get();
+        .snapshots();
   }
 
   uploadNotion(NotionModel notion) async {

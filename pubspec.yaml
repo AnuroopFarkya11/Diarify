@@ -87,9 +87,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - asset/icons/
-    - asset/songs/
+    - assets/songs/
     - assets/
-#    - asset/songs/happy.mp3
 #     - icons/
 #     - images/a_dot_ham.jpeg
 
@@ -102,7 +101,7 @@ flutter:
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
+  # list giving the asset and other descriptors for the font.
   # example:
   # fonts:
   #   - family: Schyler

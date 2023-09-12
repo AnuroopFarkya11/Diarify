@@ -3,13 +3,13 @@ import 'dart:developer';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snetimentaldiary/app/API/api_client.dart';
 import 'package:snetimentaldiary/app/models/sentimental_model/sentimental_model.dart';
 import 'package:snetimentaldiary/app/screens/notion_editing_page/getx_helper/state.dart';
 import 'package:snetimentaldiary/app/services/firebase.dart';
 
-import '../../../routes/route_paths.dart';
 import '../../../services/user_store.dart';
 
 class NotionEditingController extends GetxController {
@@ -20,13 +20,19 @@ class NotionEditingController extends GetxController {
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
   final audioPlayer = AudioPlayer();
+  int count  = 0 ;
+  @override
+  void onClose() {
+    audioPlayer.pause();
+    super.onClose();
+  }
 
   final Map<String, String> songs = {
-    'joy': 'asset/songs/love 1.mp3',
-    'sadness': 'asset/songs/sad 2.mp3',
-    'fear': 'asset/songs/fear 1.mp3',
-    'anger': 'asset/songs/sad 1.mp3',
-    'surprise': 'asset/songs/happy 1.mp3',
+    'joy': 'songs/love_1.mp3',
+    'sadness': 'songs/sad_2.mp3',
+    'fear': 'songs/fear_1.mp3',
+    'anger': 'songs/sad_1.mp3',
+    'surprise': 'songs/happy_1.mp3',
   };
 
   var isPlaying = false.obs;
@@ -40,12 +46,16 @@ class NotionEditingController extends GetxController {
     super.onInit();
   }
 
-  pauseSong() async {
+  togglePlayer() async {
     if (isPlaying.value) {
       await audioPlayer.pause();
       isPlaying.value = false;
     }else{
-      // await audioPlayer.play(songs[state.sentimentalData.value.sentiment]!);
+      if(songs[state.sentimentalData.value.sentiment] != null){
+        await audioPlayer.play(AssetSource(songs[state.sentimentalData.value.sentiment]!));
+      }else{
+        await audioPlayer.play(AssetSource(songs['joy']!));
+      }
       isPlaying.value = true;
     }
   }
@@ -54,7 +64,7 @@ class NotionEditingController extends GetxController {
     if (isPlaying.value) {
       await audioPlayer.pause();
     }
-    // await audioPlayer.play(songs[state.sentimentalData.value.sentiment]!);
+    await audioPlayer.play(AssetSource(songs[state.sentimentalData.value.sentiment]!));
     isPlaying.value = true;
   }
 
@@ -66,6 +76,45 @@ class NotionEditingController extends GetxController {
     );
     if(data.body != null){
       state.sentimentalData.value = SentimentalModel.fromJson(data.body);
+      if(count == 0){
+        Get.snackbar(
+          "Diarify",
+          'Diarify is detecting the song',
+          snackStyle: SnackStyle.FLOATING,
+          icon: const Icon(
+            Icons.music_note,
+            color: Color(0xff28282B),
+          ),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.grey[200],
+          borderRadius: 10,
+          margin: EdgeInsets.all(10),
+          padding: EdgeInsets.all(15),
+          colorText: const Color(0xff28282B),
+          duration: const Duration(seconds: 4),
+          isDismissible: true,
+          forwardAnimationCurve: Curves.easeOutBack,
+        );
+      }else{
+        Get.snackbar(
+          "Diarify",
+          'Sentiment changed',
+          snackStyle: SnackStyle.FLOATING,
+          icon: const Icon(
+            Icons.music_note,
+            color: Color(0xff28282B),
+          ),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.grey[200],
+          borderRadius: 10,
+          margin: EdgeInsets.all(10),
+          padding: EdgeInsets.all(15),
+          colorText: const Color(0xff28282B),
+          duration: const Duration(seconds: 4),
+          isDismissible: true,
+          forwardAnimationCurve: Curves.easeOutBack,
+        );
+      }
     }
   }
 

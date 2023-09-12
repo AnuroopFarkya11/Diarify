@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:snetimentaldiary/app/routes/route_paths.dart';
 import 'package:snetimentaldiary/app/screens/audio_player.dart';
 import 'package:snetimentaldiary/app/screens/getx_helper/controller.dart';
 import 'package:snetimentaldiary/app/services/firebase.dart';
@@ -48,9 +49,9 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Diarify',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blue
       ),
-      home: AudioPlayerScreen(),
+      home: Splashing(),
       getPages: RouteHelper.routes
     );
   }

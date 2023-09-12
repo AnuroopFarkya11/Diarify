@@ -60,73 +60,72 @@ class HomePage extends GetView<HomePageController> {
             Obx(
               () => SizedBox(
                 height: MediaQuery.of(context).size.height/1.27,
-                child: SmartRefresher(
-                  enablePullDown: true,
-                  enablePullUp: false,
-                  physics: const BouncingScrollPhysics(),
-                  onLoading: controller.onLoading,
-                  onRefresh: controller.onRefresh,
-                  controller: controller.refreshController,
-                  header: const WaterDropMaterialHeader(),
-                  child: !controller.isLoading.value ?
-                  Container(
-                    width: double.maxFinite,
-                    margin: const EdgeInsets.only( top: 10),
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: controller.state.notionsList.length,
-                      itemBuilder: (context, index){
-                        return GestureDetector(
-                          onTap: (){
-                            Get.toNamed(
-                                RoutePaths.notionEditingPage,
-                                parameters: {
-                                  'title': controller.state.notionsList[index].title,
-                                  'content': controller.state.notionsList[index].notionContent
-                                }
+                child: !controller.isLoading.value ?
+                Container(
+                  width: double.maxFinite,
+                  margin: const EdgeInsets.only( top: 10),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          reverse: true,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: controller.state.notionsList.length,
+                          itemBuilder: (context, index){
+                            return GestureDetector(
+                              onTap: (){
+                                Get.toNamed(
+                                    RoutePaths.notionEditingPage,
+                                    parameters: {
+                                      'title': controller.state.notionsList[index].title,
+                                      'content': controller.state.notionsList[index].notionContent
+                                    }
+                                );
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    color: const Color(0xffece9e6),
+                                    border: Border.all(
+                                        color: Colors.black,
+                                        width: 1
+                                    )
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      controller.state.notionsList[index].title,
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5,),
+                                    Text(
+                                      controller.state.notionsList[index].notionContent,
+                                      maxLines: 4,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+                              ),
                             );
                           },
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: const Color(0xffece9e6),
-                              border: Border.all(
-                                color: Colors.black,
-                                width: 1
-                              )
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  controller.state.notionsList[index].title,
-                                  style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w500
-                                  ),
-                                ),
-                                const SizedBox(height: 5,),
-                                Text(
-                                  controller.state.notionsList[index].notionContent,
-                                  maxLines: 4,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400
-                                  ),
-                                ),
-
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ) : Container(),
-                ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ) : Container()
               ),
             ),
           ],
